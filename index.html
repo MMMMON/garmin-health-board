@@ -32,6 +32,25 @@ table.pt{border-collapse:collapse;margin:6px 0} table.pt td{border:1px solid #30
 <div class="frow"><span class="k">步频</span><span class="v">尽量保持 160 以上（小步快倒脚）</span></div>
 <div class="note">⚠️ 唯一注意事项：最近跑步心率容易飘高，出门前几分钟压着点，别一上来就冲。</div>
 </div>
+<div style="margin-top:12px;background:#161b22;border:1px solid #30363d;border-radius:12px;padding:12px">
+<div style="font-size:13px;color:#8b949e">📅 <span id="rfTime">数据更新于 11月26日 07:41</span>（每天 07:00 自动更新，17:00 复盘后也会更新）</div>
+<button id="rfBtn" onclick="refreshBoard()" style="display:block;width:100%;margin-top:8px;padding:13px;background:#1f6feb;border:none;border-radius:10px;color:#fff;font-size:16px;font-weight:600;cursor:pointer">🔄 刷新数据</button>
+<div id="rfStatus" style="font-size:13px;color:#8b949e;margin-top:8px;min-height:18px"></div>
+</div>
+<script>
+const CUR = "11月26日 07:41";
+async function refreshBoard(){
+  const btn=document.getElementById('rfBtn'), st=document.getElementById('rfStatus');
+  btn.disabled=true; btn.style.opacity=.6; st.textContent='正在检查最新数据…';
+  try{
+    const res=await fetch(location.pathname+'?t='+Date.now(),{cache:'no-store'});
+    const html=await res.text();
+    const mm=html.match(/数据更新于\s*([0-9]+月[0-9]+日 [0-9]{2}:[0-9]{2})/);
+    if(mm && mm[1]!==CUR){ st.textContent='有新数据（'+mm[1]+'），正在载入…'; location.href=location.pathname+'?t='+Date.now(); }
+    else { st.textContent='已是最新：当前就是 '+CUR+' 的数据，新数据每天 07:00 自动生成。'; btn.disabled=false; btn.style.opacity=1; }
+  }catch(e){ st.textContent='检查失败：网络不通或页面暂时不可达，请稍后再试。'; btn.disabled=false; btn.style.opacity=1; }
+}
+</script>
 <a href="./input.html" style="display:block;text-align:center;margin-top:12px;padding:12px;background:#161b22;border:1px solid #238636;border-radius:12px;color:#7ee787;font-size:15px;font-weight:600;text-decoration:none">🏋️ 记录力量训练 / 报痛感（点这里输入）</a>
 
 <div style="background:#161b22;border:1px solid #30363d;border-radius:12px;padding:14px;margin-top:12px">
