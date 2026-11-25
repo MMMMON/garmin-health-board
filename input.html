@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>开心的健康看板 · 记录力量训练</title><style>
+*{box-sizing:border-box} body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#0f1419;color:#e6edf3;margin:0;padding:14px;max-width:560px;margin:0 auto}
+label{display:block;font-size:12px;color:#8b949e;margin:12px 0 4px}
+input[type=text],input[type=datetime-local],select{width:100%;padding:9px;border-radius:8px;border:1px solid #30363d;background:#161b22;color:#e6edf3;font-size:14px}
+.lvrow{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.lv{padding:9px 6px;border-radius:8px;border:1px solid #30363d;background:#161b22;color:#e6edf3;font-size:13px;cursor:pointer;text-align:center}
+.lv small{display:block;color:#8b949e;font-size:11px}
+.lv.on{border-color:#238636;box-shadow:inset 0 0 0 1px #238636;background:#12261a}
+.vasrow{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.save{width:100%;margin-top:16px;padding:12px;border:none;border-radius:9px;background:#238636;color:#fff;font-size:15px;font-weight:600;cursor:pointer}
+.chk{display:flex;align-items:center;gap:6px;font-size:13px;margin-top:10px;color:#e6edf3}
+.tip{font-size:12px;color:#8b949e;line-height:1.6;margin-top:10px}
+a{color:#58a6ff}
+</style></head><body>
+<h2 style="font-size:18px;margin:4px 0">🏋️ 记录力量训练 / 报痛感</h2>
+<label>训练时间（扬州时间）</label><input type="datetime-local" id="t">
+<label>等级（决定跑步锁时长）</label>
+<div class="lvrow">
+<button type="button" class="lv" data-lv="L2">L2 下肢大重量<small>深蹲/硬拉/箭步蹲 · 锁 48h</small></button>
+<button type="button" class="lv" data-lv="L1">L1 下肢轻量<small>轻量/自重下肢 · 锁 24h</small></button>
+<button type="button" class="lv" data-lv="L3">L3 新动作/大幅加量<small>锁 72h</small></button>
+<button type="button" class="lv" data-lv="L0">L0 上肢/核心<small>不锁跑步</small></button>
+</div>
+<label>练了什么</label><input type="text" id="note" placeholder="如：深蹲 + 单腿硬拉">
+<div class="vasrow">
+<div><label>膝痛 VAS（0–10）</label><select id="knee"><option value="">不填</option></select></div>
+<div><label>足底痛 VAS（0–10）</label><select id="plantar"><option value="">不填</option></select></div>
+</div>
+<label class="chk"><input type="checkbox" id="resolve"> 足底是晨起第一步痛，走动 5 分钟内缓解</label>
+<button type="button" class="save" id="go">提交（会跳到 GitHub 确认页，再点一次绿色按钮即可）</button>
+<div class="tip">提交后系统会在下一次晨报/复盘（09:00 / 17:00）前自动入账，也可以回聊天跟我说“同步”立刻生效。填错了没关系，聊天里告诉我删。<br><br><a href="./index.html">← 返回看板</a></div>
+<script>
+var level='L2';
+function p(n){return (n<10?'0':'')+n}
+var d=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
+document.getElementById('t').value=d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+'T'+p(d.getHours())+':'+p(d.getMinutes());
+['knee','plantar'].forEach(function(id){var s=document.getElementById(id);for(var i=0;i<=10;i++){var o=document.createElement('option');o.value=i;o.textContent=i;s.appendChild(o)}});
+document.querySelectorAll('.lv').forEach(function(b){if(b.dataset.lv===level)b.classList.add('on');b.addEventListener('click',function(){level=b.dataset.lv;document.querySelectorAll('.lv').forEach(function(x){x.classList.toggle('on',x.dataset.lv===level)})})});
+document.getElementById('go').addEventListener('click',function(){
+  var t=document.getElementById('t').value; if(!t){alert('先选训练时间');return}
+  var body=['STRENGTH_LOG_V1','ts: '+t+':00+08:00','kind: '+(level==='L0'?'upper':'lower'),'level: '+level,
+    'note: '+(document.getElementById('note').value.trim()||'力量训练'),
+    'knee_vas: '+document.getElementById('knee').value,'plantar_vas: '+document.getElementById('plantar').value,
+    'plantar_resolves: '+document.getElementById('resolve').checked].join('\n');
+  var url='https://github.com/MMMMON/garmin-health-dashboard/issues/new?labels=strength-log&title='+encodeURIComponent('力量打卡 '+t.slice(0,10)+' '+level)+'&body='+encodeURIComponent(body);
+  location.href=url;
+});
+</script></body></html>
