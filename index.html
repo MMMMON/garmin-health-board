@@ -1,57 +1,37 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Garmin 健康看板 · 私有</title><style>
-body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#0f1419;color:#e6edf3;margin:0;padding:16px}
-h1{font-size:20px} h2{font-size:16px;margin-top:28px;color:#7ee787}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
-.card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:12px}
-.card b{font-size:24px;display:block} .sub{color:#8b949e;font-size:12px}
-.warn{background:#2d1b1b;border:1px solid #f85149;border-radius:10px;padding:12px;margin-top:10px}
-.ok{background:#12261a;border:1px solid #238636;border-radius:10px;padding:12px;margin-top:10px}
-canvas{width:100%;height:180px;background:#161b22;border:1px solid #30363d;border-radius:10px}
-table{width:100%;border-collapse:collapse;font-size:13px} td,th{border-bottom:1px solid #30363d;padding:6px;text-align:left}
+<title>Garmin 硬核看板 · SPEC v1</title><style>
+*{box-sizing:border-box} body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#0f1419;color:#e6edf3;margin:0;padding:12px;max-width:860px;margin:0 auto}
+.topbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:#161b22;border:1px solid #30363d;border-radius:10px;padding:10px 12px;font-size:13px}
+.topbar .tag{background:#21262d;border:1px solid #30363d;border-radius:6px;padding:3px 8px}
+section{margin-top:12px} h2{font-size:15px;margin:0 0 8px}
+.presc{background:#12261a;border:1px solid #238636;border-radius:12px;padding:14px}
+.presc.red{background:#2d1b1b;border-color:#f85149}
+.ptitle{font-size:19px;font-weight:700;margin:4px 0 10px}
+.done{font-size:14px;color:#7ee787;margin-bottom:6px}
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.chip{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:8px;text-align:center}
+.chip span{display:block;color:#8b949e;font-size:11px} .chip b{font-size:14px}
+.ptext{font-size:14px;line-height:1.6} .brief{margin-top:10px;color:#d2a8ff;font-size:13px;line-height:1.6}
+.warn{background:#2a2118;border:1px solid #d29922;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.6;margin-bottom:8px}
+.warn.ok{background:#12261a;border-color:#238636}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:14px}
+.kpi .name{color:#8b949e;font-size:12px} .kpi .val{font-size:22px;font-weight:700;margin:4px 0}
+.kpi .sub{color:#8b949e;font-size:12px;line-height:1.5}
+.foot{color:#6e7681;font-size:11px;margin-top:14px;line-height:1.6}
 </style></head><body>
-<h1>🏃 Garmin 健康看板（私有）</h1>
-<div class="sub">档案：42岁 · 178cm · 90kg（BMI 28.4）· Forerunner 955 · 数据截至 2026-11-25（自动拉取）· 个人基线：HRV 61.2ms / 静息心率 43.7bpm</div>
-<h2>最新状态（2026-11-25 晨）</h2>
-<div class="cards">
-<div class="card"><span class="sub">昨夜 HRV</span><b>65 ms</b><span class="sub">周均 67 · BALANCED</span></div>
-<div class="card"><span class="sub">静息心率</span><b>44 bpm</b><span class="sub">近7天均值 43.7</span></div>
-<div class="card"><span class="sub">睡眠评分 / 时长</span><b>88 · 7.62h</b><span class="sub">深睡 15.1% · REM 23.9%</span></div>
-<div class="card"><span class="sub">身体电量充电</span><b>+64</b><span class="sub">近7天均值 72.3</span></div>
-<div class="card"><span class="sub">平均压力</span><b>12</b><span class="sub">近7天均值 12.7</span></div>
-<div class="card"><span class="sub">昨夜血氧 / 呼吸率</span><b>91.0% · 12.0</b><span class="sub">只看趋势，单日不慌</span></div>
-<div class='card'><span class='sub'>今日已练</span><b style='font-size:16px'>重复大步跑 0.957km 均心率155.0；磨心率 3.333km 均心率128.0</b><span class='sub'>2026-11-25</span></div>
-</div>
-<div class="ok"><b>今日（11-25）训练已完成：</b>下午先磨心率 3.33km（均心率 128，略高于靶心上沿）、随后又加了一段重复大步跑 0.96km（均心率 155，属高强度）。今天到此为止，不再加练；<b>明天（周四）改休息或恢复走</b>——周一力量、周二 Zone 2、周三带强度，连着三天有负荷了。今晚争取早睡，把身体电量充回 70+。</div>
-<div class="warn"><b>⚠️ 异常与缺口（60 天核查）：</b><br>
-1) <b>10-13、10-15、11-08 三晚睡眠数据整段缺失</b>，身体电量只充了 12 / 9 / 19——大概率没戴表睡或没同步。<br>
-2) <b>10-30 是 60 天最差一天</b>：HRV 44、静息心率 48、睡眠 57 分、压力 25，四项同时报警。<br>
-3) 60 天里 <b>15 天睡眠不足 6.5 小时</b>，是最主要的恢复短板；近 14 天已改善（均值约 7.0h）。<br>
-4) <b>力量训练不进手表记录（用户确认）</b>：力量日＝周一（2026-11-23 恢复首练：哑铃单腿硬拉＋深蹲，器械仅引体杆＋2×20kg 哑铃）；自重循环模板＝5 引体＋10 俯卧撑＋15 深蹲、20 分钟 8 组。负荷由聊天口头同步。<br>
-5) 步频纯跑段约 155–161 spm，接近但还没稳进 160–168 目标带。</div>
-<h2>我该关心的指标（方案）</h2>
-<div class="ok" style="background:#161b22;border-color:#30363d"><b>每天（决定练不练）：</b>HRV 看 7 天均值（红线：单日 &lt;50 或较周均跌 &gt;20%）· 静息心率（红线 ≥48）· 睡眠 ≥7h（红线 &lt;6h）· 身体电量充电（红线 &lt;40）<br>
-<b>每次训练（决定练得对不对）：</b>轻松跑心率 120–126（上限 130，间歇课不卡）· 纯跑段步频 160–168 · 同心率配速逐月比<br>
-<b>每周/每月（看趋势）：</b>周负荷结构（跑 3＋力量 1，别三天连顶）· 体重周均 · 睡眠债天数<br>
-<b>别被带偏：</b>单日 HRV 涨跌、整段平均步频、酸痛度字段（未记录）；血氧只看趋势。完整方案见仓库 PLAN.md。</div>
-<h2>HRV 与周均线（60天）</h2><canvas id="c1"></canvas>
-<h2>静息心率（60天）</h2><canvas id="c2"></canvas>
-<h2>睡眠评分与时长（60天）</h2><canvas id="c3"></canvas>
-<h2>身体电量充电与压力（60天）</h2><canvas id="c4"></canvas>
-<h2>近 30 天活动</h2><table><tr><th>时间</th><th>活动</th><th>距离</th><th>时长</th><th>心率 均/最大</th><th>步频</th><th>TE 有氧/无氧</th></tr><tr><td>2026-11-25 15:46</td><td>扬州市 - 重复大步跑</td><td>0.957 km</td><td>7.12 分</td><td>155.0/177.0</td><td>123.359375</td><td>2.3/3.0</td></tr><tr><td>2026-11-25 15:15</td><td>扬州市 - 磨心率</td><td>3.333 km</td><td>29.25 分</td><td>128.0/153.0</td><td>141.984375</td><td>2.4/0.0</td></tr><tr><td>2026-11-24 15:11</td><td>扬州市 - 磨心率</td><td>5.034 km</td><td>40.36 分</td><td>121.0/142.0</td><td>147.53125</td><td>2.8/1.0</td></tr><tr><td>2026-11-21 14:25</td><td>磨心率</td><td>3.608 km</td><td>31.55 分</td><td>120.0/138.0</td><td>144.125</td><td>2.3/0.0</td></tr><tr><td>2026-11-20 14:37</td><td>磨心率</td><td>5.011 km</td><td>47.21 分</td><td>122.0/133.0</td><td>146.5625</td><td>2.2/0.0</td></tr><tr><td>2026-11-17 16:14</td><td>扬州市 - 磨心率</td><td>3.432 km</td><td>31.14 分</td><td>119.0/140.0</td><td>138.453125</td><td>2.1/0.5</td></tr><tr><td>2026-11-16 15:20</td><td>扬州市 - 磨心率</td><td>4.253 km</td><td>38.03 分</td><td>121.0/138.0</td><td>142.796875</td><td>2.2/0.3</td></tr><tr><td>2026-11-13 16:13</td><td>HIIT</td><td>0.0 km</td><td>19.97 分</td><td>112.0/151.0</td><td></td><td>1.1/0.7</td></tr><tr><td>2026-11-12 15:32</td><td>跑步训练</td><td>2.343 km</td><td>21.05 分</td><td>126.0/163.0</td><td>133.171875</td><td>2.2/0.3</td></tr><tr><td>2026-11-10 15:31</td><td>磨心率</td><td>3.663 km</td><td>30.15 分</td><td>126.0/138.0</td><td>156.53125</td><td>2.3/0.0</td></tr><tr><td>2026-11-09 15:38</td><td>磨心率</td><td>3.648 km</td><td>30.21 分</td><td>125.0/146.0</td><td>161.5</td><td>2.2/0.0</td></tr><tr><td>2026-11-08 17:32</td><td>HIIT</td><td>0.0 km</td><td>14.11 分</td><td>113.0/150.0</td><td></td><td>0.8/0.9</td></tr><tr><td>2026-11-06 15:53</td><td>扬州市 跑步</td><td>3.377 km</td><td>30.03 分</td><td>125.0/138.0</td><td>159.9375</td><td>2.0/0.0</td></tr><tr><td>2026-11-05 15:37</td><td>扬州市 跑步</td><td>4.471 km</td><td>40.29 分</td><td>125.0/137.0</td><td>155.25</td><td>2.2/0.1</td></tr><tr><td>2026-11-02 15:54</td><td>扬州市 - 轻松跑</td><td>3.536 km</td><td>28.08 分</td><td>139.0/147.0</td><td>162.25</td><td>2.3/0.2</td></tr></table>
-<div class="sub" style="margin-top:20px">每日 09:00 / 17:00（柏林时间）自动拉取更新。活动时间 for 手表本地时间（扬州 UTC+8）。</div>
-<script>
-const D={"dates": ["09-27", "09-28", "09-29", "09-30", "10-01", "10-02", "10-03", "10-04", "10-05", "10-06", "10-07", "10-08", "10-09", "10-10", "10-11", "10-12", "10-13", "10-14", "10-15", "10-16", "10-17", "10-18", "10-19", "10-20", "10-21", "10-22", "10-23", "10-24", "10-25", "10-26", "10-27", "10-28", "10-29", "10-30", "10-31", "11-01", "11-02", "11-03", "11-04", "11-05", "11-06", "11-07", "11-08", "11-09", "11-10", "11-11", "11-12", "11-13", "11-14", "11-15", "11-16", "11-17", "11-18", "11-19", "11-20", "11-21", "11-22", "11-23", "11-24", "11-25"], "hrv": [65.0, 56.0, 54.0, 49.0, 59.0, 59.0, 60.0, 63.0, 55.0, 54.0, 68.0, 62.0, 57.0, null, 53.0, 52.0, null, 55.0, null, 46.0, 52.0, 57.0, 61.0, 66.0, 60.0, 77.0, 60.0, 57.0, 56.0, 67.0, 59.0, 59.0, 60.0, 44.0, 65.0, 62.0, 76.0, 55.0, 59.0, 63.0, 56.0, 60.0, null, 54.0, 65.0, 62.0, 62.0, 70.0, 69.0, 74.0, 76.0, 67.0, 61.0, 60.0, 70.0, 72.0, 66.0, 68.0, 66.0, 65.0], "hrvWk": [57.0, 58.0, 58.0, 57.0, 57.0, 58.0, 57.0, 57.0, 57.0, 57.0, 60.0, 60.0, 60.0, null, 58.0, 58.0, 58.0, 56.0, null, 53.0, 52.0, 52.0, 54.0, 56.0, 57.0, 59.0, 62.0, 62.0, 62.0, 63.0, 62.0, 62.0, 60.0, 57.0, 58.0, 59.0, 60.0, 59.0, 59.0, 60.0, 62.0, 61.0, 61.0, 58.0, 59.0, 60.0, 60.0, 62.0, 63.0, 65.0, 68.0, 68.0, 68.0, 68.0, 68.0, 68.0, 67.0, 66.0, 66.0, 67.0], "rhr": [42.0, 43.0, 44.0, 45.0, 43.0, 45.0, 43.0, 44.0, 45.0, 46.0, 43.0, 43.0, 46.0, 45.0, 46.0, 47.0, 49.0, 46.0, 50.0, 47.0, 45.0, 43.0, 43.0, 42.0, 44.0, 41.0, 45.0, 45.0, 44.0, 43.0, 44.0, 44.0, 45.0, 48.0, 43.0, 42.0, 40.0, 44.0, 45.0, 42.0, 43.0, 42.0, 46.0, 44.0, 43.0, 45.0, 43.0, 42.0, 42.0, 41.0, 43.0, 42.0, 43.0, 44.0, 44.0, 44.0, 43.0, 43.0, 44.0, 44.0], "sleep": [84.0, 74.0, 71.0, 73.0, 81.0, 82.0, 83.0, 77.0, 85.0, 70.0, 77.0, 85.0, 79.0, 81.0, 74.0, 66.0, null, 71.0, null, 76.0, 79.0, 87.0, 80.0, 94.0, 76.0, 70.0, 78.0, 84.0, 78.0, 76.0, 73.0, 74.0, 50.0, 57.0, 79.0, 80.0, 64.0, 71.0, 76.0, 85.0, 83.0, 86.0, null, 85.0, 88.0, 78.0, 79.0, 63.0, 70.0, 63.0, 84.0, 92.0, 78.0, 72.0, 86.0, 77.0, 85.0, 85.0, 90.0, 88.0], "sleepH": [6.72, 7.26, 7.23, 6.98, 6.85, 7.33, 7.95, 6.3, 7.87, 6.6, 7.4, 6.94, 6.55, 6.93, 7.87, 5.08, null, 5.9, null, 7.1, 6.96, 7.52, 6.63, 7.63, 6.07, 6.01, 6.6, 7.73, 7.5, 7.47, 7.12, 5.95, 6.38, 6.33, 7.6, 7.32, 4.86, 6.6, 6.33, 6.98, 7.72, 7.28, null, 7.2, 7.6, 6.28, 6.17, 7.18, 6.0, 6.72, 7.35, 8.0, 6.25, 5.98, 7.13, 7.17, 7.59, 7.3, 7.22, 7.62], "bb": [62.0, 68.0, 63.0, 63.0, 66.0, 79.0, 62.0, 62.0, 63.0, 77.0, 73.0, 65.0, 58.0, 66.0, 60.0, 52.0, 12.0, 53.0, 9.0, 54.0, 76.0, 66.0, 86.0, 62.0, 77.0, 64.0, 73.0, 67.0, 69.0, 63.0, 79.0, 59.0, 58.0, 35.0, 98.0, 72.0, 55.0, 64.0, 66.0, 79.0, 70.0, 61.0, 19.0, 77.0, 70.0, 64.0, 72.0, 69.0, 64.0, 75.0, 65.0, 76.0, 52.0, 79.0, 71.0, 89.0, 66.0, 67.0, 70.0, 64.0], "stress": [10.0, 16.0, 14.0, 16.0, 12.0, 17.0, 11.0, 11.0, 14.0, 15.0, 9.0, 12.0, 15.0, 13.0, 18.0, 16.0, null, 13.0, null, 18.0, 13.0, 13.0, 11.0, 11.0, 13.0, 12.0, 17.0, 16.0, 16.0, 13.0, 15.0, 13.0, 16.0, 25.0, 14.0, 14.0, 7.0, 14.0, 14.0, 10.0, 14.0, 13.0, null, 15.0, 9.0, 12.0, 12.0, 11.0, 11.0, 16.0, 9.0, 11.0, 14.0, 16.0, 9.0, 11.0, 11.0, 15.0, 15.0, 12.0]};
-function chart(id, series){
- const c=document.getElementById(id), x=c.getContext('2d'); const W=c.width=c.offsetWidth*2, H=c.height=360;
- const all=series.flatMap(s=>s.d.filter(v=>v!==null)); let mn=Math.min(...all), mx=Math.max(...all); const pad=(mx-mn)*0.15||1; mn-=pad; mx+=pad;
- series.forEach(s=>{ x.beginPath(); x.strokeStyle=s.color; x.lineWidth=3; let started=false;
-  s.d.forEach((v,i)=>{ if(v===null){started=false;return;} const px=i/(s.d.length-1)*(W-40)+20, py=H-20-((v-mn)/(mx-mn))*(H-40); if(!started){x.moveTo(px,py);started=true;} else x.lineTo(px,py); }); x.stroke(); });
- x.fillStyle='#8b949e'; x.font='22px sans-serif'; series.forEach((s,i)=>x.fillText(s.name+' ■', 20+i*220, 28));
- x.fillText(D.dates[0],20,H-2); x.fillText(D.dates[D.dates.length-1],W-110,H-2);
-}
-chart('c1',[{name:'HRV',d:D.hrv,color:'#7ee787'},{name:'HRV周均',d:D.hrvWk,color:'#58a6ff'}]);
-chart('c2',[{name:'静息心率',d:D.rhr,color:'#f778ba'}]);
-chart('c3',[{name:'睡眠评分',d:D.sleep,color:'#58a6ff'},{name:'时长h×10',d:D.sleepH.map(v=>v===null?null:v*10),color:'#d2a8ff'}]);
-chart('c4',[{name:'身体电量',d:D.bb,color:'#ffa657'},{name:'压力',d:D.stress,color:'#f85149'}]);
-</script></body></html>
+<div class="topbar"><span class="tag">昨日同步正常（2026-11-25）</span><span class="tag">膝痛 VAS：未录入</span><span class="tag">足底 VAS：未录入</span><span class="tag">下肢力量最近：2026-11-23</span><span style="color:#8b949e">VAS 与力量课在聊天里报我即更新</span></div>
+<section><h2>📋 今日具体锻炼建议（处方引擎 P0–P4）</h2>
+<div class="presc red"><div class='done'>✅ 今日已完成训练：今日已练：磨心率 3.3km、重复大步跑 1.0km。明日预告见下。</div><div class='ptitle'>明日处方 · 🔴 关节熔断 · 零冲击替代</div>
+<div class="chips"><div class='chip'><span>心率锁</span><b>120–126 单车</b></div><div class='chip'><span>步频</span><b>—</b></div><div class='chip'><span>力量</span><b>仅上肢+核心</b></div><div class='chip'><span>时长</span><b>35–40 分</b></div></div>
+<div class="ptext">禁跑：功率单车/划船机 35–40 分钟，心率锁 120–126；仅纯上肢推拉+卧姿核心，严禁深蹲硬拉与站姿负重。</div>
+<div class="brief">AI 晨报：ANS 就绪度 Z+0.72 绿灯。机械负荷比 1.46 触发关节熔断：明日禁跑，单车 35–40 分锁 120–126，只练上肢，步频课等负荷回落再上。</div></div></section>
+<section><h2>⚠️ 最近注意事项（动态风控，最多 3 条）</h2><div class='warn'>🟡 <b>CADENCE_DROP</b> 步频防塌陷：最近跑步步频 142 spm、触地 279 ms。下次跑开节拍器锁 165–168，小步快倒；心率破 126 就切 60 秒快走，不许低步频硬撑。</div><div class='warn'>🟡 <b>HR_DRIFT</b> 甜区漂移：近次 Z2 跑心率 >126 的时长占比已超 15%（或均心率 <115 刺激不足）。下次前 8 分钟压在 118 内，上坡改快走，用步频把心率温和拉回 122 附近。</div><div class='warn'>🟡 <b>JOINT_OVERLOAD</b> 90kg 关节警戒：机械负荷比 1.46、本周跑量 9.3km（上周 16.3km）。严禁下坡加速（下坡步行），选塑胶道/沥青避硬水泥；下次力量加单腿臀中肌+屈膝提踵。</div></section>
+<section><h2>核心 KPI</h2><div class="kpis">
+<div class="kpi"><div class="name">自主神经就绪度 ANS</div><div class="val">🟢 Z +0.72</div><div class="sub">LnHRV 7日均 4.199（基线 4.114，σ 0.117）· ΔRHR +0 · 昨夜 HRV 65 / 晨脉 44</div></div>
+<div class="kpi"><div class="name">有氧效率 EF / 解耦 Pa:Hr</div><div class="val">🟢 EF 0.89 · Pa:Hr 2.6%</div><div class="sub">最近 Z2 跑（2026-11-25）· 28 天 EF 斜率 0.0016（正=进步）· 睡眠 7.62h</div></div>
+<div class="kpi"><div class="name">90kg 机械负荷比 ACWR</div><div class="val">🔴 1.46</div><div class="sub">EWMA7 389.2 / EWMA28 266.6 · 安全 0.80–1.15 · 熔断 >1.25 · 本周跑量 9.3km</div></div>
+<div class="kpi"><div class="name">并发阻尼 / 力量锁</div><div class="val">🟢 剩余 0h</div><div class="sub">下肢力量 48h 保护窗 · 膝 VAS 未录入 · 足底 VAS 未录入 · 任一 ≥2 熔断</div></div>
+</div></section>
+<div class="foot">SPEC v1 严格执行：身体电量/压力/VO₂max 估算/训练状态/睡眠分期/步数/卡路里已按降噪清单剔除，不入看板。公式与工程裁定见私有仓 SPEC.md。数据 2026-11-25 16:50（扬州时间）自动生成。</div>
+</body></html>
