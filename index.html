@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Garmin 硬核看板 · SPEC v1</title><style>
+<title>Garmin 硬核看板 · SPEC v2</title><style>
 *{box-sizing:border-box} body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#0f1419;color:#e6edf3;margin:0;padding:12px;max-width:860px;margin:0 auto}
 .topbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:#161b22;border:1px solid #30363d;border-radius:10px;padding:10px 12px;font-size:13px}
 .topbar .tag{background:#21262d;border:1px solid #30363d;border-radius:6px;padding:3px 8px}
@@ -14,24 +14,25 @@ section{margin-top:12px} h2{font-size:15px;margin:0 0 8px}
 .ptext{font-size:14px;line-height:1.6} .brief{margin-top:10px;color:#d2a8ff;font-size:13px;line-height:1.6}
 .warn{background:#2a2118;border:1px solid #d29922;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.6;margin-bottom:8px}
 .warn.ok{background:#12261a;border-color:#238636}
+.cooled{color:#8b949e;font-size:12px;padding:2px 4px}
 .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .kpi{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:14px}
 .kpi .name{color:#8b949e;font-size:12px} .kpi .val{font-size:22px;font-weight:700;margin:4px 0}
 .kpi .sub{color:#8b949e;font-size:12px;line-height:1.5}
 .foot{color:#6e7681;font-size:11px;margin-top:14px;line-height:1.6}
 </style></head><body>
-<div class="topbar"><span class="tag">昨日同步正常（2026-11-25）</span><span class="tag">膝痛 VAS：未录入</span><span class="tag">足底 VAS：未录入</span><span class="tag">下肢力量最近：2026-11-23</span><span style="color:#8b949e">VAS 与力量课在聊天里报我即更新</span></div>
-<section><h2>📋 今日具体锻炼建议（处方引擎 P0–P4）</h2>
+<div class="topbar"><span class="tag">昨日同步正常（2026-11-25）</span><span class="tag">膝痛 VAS：未录入</span><span class="tag">足底 VAS：未录入</span><span class="tag">下肢力量最近：2026-11-23（L2）</span><span style="color:#8b949e">VAS 与力量课在聊天里报我即更新</span></div>
+<section><h2>📋 今日具体锻炼建议（处方引擎 v2：P0→P1→睡眠闸门→P2→P3→P4）</h2>
 <div class="presc red"><div class='done'>✅ 今日已完成训练：今日已练：磨心率 3.3km、重复大步跑 1.0km。明日预告见下。</div><div class='ptitle'>明日处方 · 🔴 关节熔断 · 零冲击替代</div>
 <div class="chips"><div class='chip'><span>心率锁</span><b>120–126 单车</b></div><div class='chip'><span>步频</span><b>—</b></div><div class='chip'><span>力量</span><b>仅上肢+核心</b></div><div class='chip'><span>时长</span><b>35–40 分</b></div></div>
 <div class="ptext">禁跑：功率单车/划船机 35–40 分钟，心率锁 120–126；仅纯上肢推拉+卧姿核心，严禁深蹲硬拉与站姿负重。</div>
-<div class="brief">AI 晨报：ANS 就绪度 Z+0.72 绿灯。机械负荷比 1.46 触发关节熔断：明日禁跑，单车 35–40 分锁 120–126，只练上肢，步频课等负荷回落再上。</div></div></section>
-<section><h2>⚠️ 最近注意事项（动态风控，最多 3 条）</h2><div class='warn'>🟡 <b>CADENCE_DROP</b> 步频防塌陷：最近跑步步频 142 spm、触地 279 ms。下次跑开节拍器锁 165–168，小步快倒；心率破 126 就切 60 秒快走，不许低步频硬撑。</div><div class='warn'>🟡 <b>HR_DRIFT</b> 甜区漂移：近次 Z2 跑心率 >126 的时长占比已超 15%（或均心率 <115 刺激不足）。下次前 8 分钟压在 118 内，上坡改快走，用步频把心率温和拉回 122 附近。</div><div class='warn'>🟡 <b>JOINT_OVERLOAD</b> 90kg 关节警戒：机械负荷比 1.46、本周跑量 9.3km（上周 16.3km）。严禁下坡加速（下坡步行），选塑胶道/沥青避硬水泥；下次力量加单腿臀中肌+屈膝提踵。</div></section>
+<div class="brief">AI 晨报：ANS Z+0.88 绿灯。双通道负荷 膝1.49/足底1.45 双红，关节熔断：明日禁跑，单车 35–40 分锁 120–126，只练上肢。</div></div></section>
+<section><h2>⚠️ 最近注意事项（动态风控 · 72h 冷却防疲劳）</h2><div class='warn'>🟡 <b>CADENCE_DROP</b> 步频防塌陷：最近跑步步频 142 spm。下次跑开节拍器锁 165–168，小步快倒；心率破 126 切 60 秒快走，不许低步频硬撑。</div><div class='warn'>🟡 <b>HR_DRIFT</b> 甜区漂移：近次 Z2 跑心率 >126 时长占比 >15%。下次前 8 分钟压在 118 内，上坡改快走，用步频把心率拉回 122 附近。</div><div class='warn'>🟡 <b>JOINT_OVERLOAD</b> 90kg 关节警戒：膝通道 ACWR 1.49、足底通道 1.45、近7天步数增幅 77.0%。严禁下坡加速，选软路面；下次力量加单腿臀中肌+屈膝提踵。</div></section>
 <section><h2>核心 KPI</h2><div class="kpis">
-<div class="kpi"><div class="name">自主神经就绪度 ANS</div><div class="val">🟢 Z +0.72</div><div class="sub">LnHRV 7日均 4.199（基线 4.114，σ 0.117）· ΔRHR +0 · 昨夜 HRV 65 / 晨脉 44</div></div>
-<div class="kpi"><div class="name">有氧效率 EF / 解耦 Pa:Hr</div><div class="val">🟢 EF 0.89 · Pa:Hr 2.6%</div><div class="sub">最近 Z2 跑（2026-11-25）· 28 天 EF 斜率 0.0016（正=进步）· 睡眠 7.62h</div></div>
-<div class="kpi"><div class="name">90kg 机械负荷比 ACWR</div><div class="val">🔴 1.46</div><div class="sub">EWMA7 389.2 / EWMA28 266.6 · 安全 0.80–1.15 · 熔断 >1.25 · 本周跑量 9.3km</div></div>
-<div class="kpi"><div class="name">并发阻尼 / 力量锁</div><div class="val">🟢 剩余 0h</div><div class="sub">下肢力量 48h 保护窗 · 膝 VAS 未录入 · 足底 VAS 未录入 · 任一 ≥2 熔断</div></div>
+<div class="kpi"><div class="name">自主神经就绪度 ANS</div><div class="val">🟢 Z +0.88</div><div class="sub">LnHRV 7日均 4.199（中位基线 4.094，MAD σ 0.119）· 绿带 −0.50~+1.00 · CV7 0.054（基线 0.084）· ΔRHR +0 · 无附加闸门触发</div></div>
+<div class="kpi"><div class="name">有氧效率 EF / 解耦（掐头 12 分双轨）</div><div class="val">🔴 EF 0.89 · Pa:Hr 10.6%</div><div class="sub">最近 Z2（2026-11-25）：配速掉幅 7.4%（>8% 判代谢衰竭）· 28 天 EF 斜率 0.0016 · 睡眠 7.62h</div></div>
+<div class="kpi"><div class="name">90kg 机械负荷 · 双通道 ACWR</div><div class="val">膝 🔴 1.49 · 足底 🔴 1.45</div><div class="sub">安全 0.80–1.15 · 熔断 >1.25 · 近 7 天步数增幅 77.0%（硬红线 +10%）· 本周跑量 9.3km</div></div>
+<div class="kpi"><div class="name">并发阻尼 / 力量锁（L0–L3 分级）</div><div class="val">🟢 剩余 0h</div><div class="sub">L1 24h / L2 48h / L3 72h · 膝 VAS 未录入 · 足底 VAS 未录入（≤3 且 5 分钟内缓解仅黄灯）</div></div>
 </div></section>
-<div class="foot">SPEC v1 严格执行：身体电量/压力/VO₂max 估算/训练状态/睡眠分期/步数/卡路里已按降噪清单剔除，不入看板。公式与工程裁定见私有仓 SPEC.md。数据 2026-11-25 16:50（扬州时间）自动生成。</div>
+<div class="foot">SPEC v2（交叉审查修订版）：中位数+MAD 基线、高侧 HRV 黄灯、CV 闸门、Pa:Hr 掐头双轨、双通道负荷、力量锁分级、警报 72h 冷却、睡眠 &lt;5h 硬闸门。噪音指标（身体电量/压力/VO₂max 估算/训练状态/睡眠分期/步数 KPI/卡路里）已剔除。公式与工程裁定见私有仓 SPEC.md。数据 2026-11-25 16:57（扬州时间）。</div>
 </body></html>
