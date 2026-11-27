@@ -24,21 +24,21 @@ table.pt{border-collapse:collapse;margin:6px 0} table.pt td{border:1px solid #30
 .kpi .name{color:#8b949e;font-size:12px} .kpi .val{font-size:19px;font-weight:700;margin:4px 0} .kpi .sub{color:#8b949e;font-size:12px;line-height:1.5}
 .foot{color:#6e7681;font-size:11px;margin-top:12px;line-height:1.6}
 </style></head><body>
-<div style="font-size:13px;color:#8b949e;margin:2px 0 10px">开心的健康看板 · 2026-11-27</div>
+<div style="font-size:13px;color:#8b949e;margin:2px 0 10px">开心的健康看板 · 2026-11-28</div>
 <div class="front front">
-<div class='done'>✅ 今天已经练完了：跑步 4.6km</div><div class='ftitle'>🟢 明天可以正常跑</div>
+<div class='ftitle'>🟢 【今日结论】今天可以正常跑</div>
 <div class="frow"><span class="k">做什么</span><span class="v">跑 35 分钟</span></div>
 <div class="frow"><span class="k">心率</span><span class="v">120 ~ 130 bpm（以能连贯说话为准）</span></div>
 <div class="frow"><span class="k">步频</span><span class="v">尽量保持 160 以上（小步快倒脚）</span></div>
 <div class="note">⚠️ 唯一注意事项：最近跑步心率容易飘高，出门前几分钟压着点，别一上来就冲。</div>
 </div>
 <div style="margin-top:12px;background:#161b22;border:1px solid #30363d;border-radius:12px;padding:12px">
-<div style="font-size:13px;color:#8b949e">📅 <span id="rfTime">数据更新于 11月27日 16:13</span>（每天 07:00 自动更新，17:00 复盘后也会更新）</div>
+<div style="font-size:13px;color:#8b949e">📅 <span id="rfTime">数据更新于 11月28日 06:57</span>（每天 07:00 自动更新，17:00 复盘后也会更新）</div>
 <button id="rfBtn" onclick="refreshBoard()" style="display:block;width:100%;margin-top:8px;padding:13px;background:#1f6feb;border:none;border-radius:10px;color:#fff;font-size:16px;font-weight:600;cursor:pointer">🔄 刷新数据</button>
 <div id="rfStatus" style="font-size:13px;color:#8b949e;margin-top:8px;min-height:18px"></div>
 </div>
 <script>
-const CUR = "11月27日 16:13";
+const CUR = "11月28日 06:57";
 async function refreshBoard(){
   const btn=document.getElementById('rfBtn'), st=document.getElementById('rfStatus');
   btn.disabled=true; btn.style.opacity=.6; st.textContent='正在检查最新数据…';
@@ -51,23 +51,7 @@ async function refreshBoard(){
   }catch(e){ st.textContent='检查失败：网络不通或页面暂时不可达，请稍后再试。'; btn.disabled=false; btn.style.opacity=1; }
 }
 </script>
-<div style="margin-top:12px;background:#2a1a08;border:1px solid #f0883e;border-radius:12px;padding:14px">
-<div style="font-size:17px;font-weight:700">🏃 明天（周五 11-27）质量跑 · 20 分钟最大跑测试 · 15:00 开跑</div>
-<div style="font-size:13px;color:#f0a35e;margin-top:4px">前提：今晚睡够 6.5 小时——睡不够就顺延，在聊天里跟我说一声。明天的日常跑取消，只做这个测试。</div>
-<div style="font-size:14px;line-height:1.8;margin-top:8px">
-<b>0:00–3:00</b> 快走热身<br>
-<b>3:00–15:00</b> 轻松跑热身，心率压在 130 以内，跑顺为主<br>
-<b>15:00–18:00</b> 过渡：逐渐加速，最后 30 秒摸到接近测试的速度再缓下来<br>
-<b>18:00 按计圈键 ▶ 20 分钟最大跑：</b><br>
-· 前 5 分钟：压住别冲，九成力，先找节奏<br>
-· 中间 10 分钟：巡航咬住，呼吸跟上<br>
-· 后 5 分钟：渐进加速<br>
-· 最后 1 分钟：全开冲刺，结束按计圈键停表<br>
-<b>之后</b> 慢走 + 慢跑 5–8 分钟冷身，拉伸小腿和髋屈肌
-</div>
-<div style="font-size:13.5px;line-height:1.7;margin-top:8px"><b>加速的标准（不看心率，看体感）：</b>能蹦词、说不成句，就是对的强度；第一公里别快于 6:45/km。心率是全程慢慢往上爬的，最后一分钟才接近最高——平均心率 162–170 是测出来的结果，不是你要盯着保持的目标。</div>
-<div style="font-size:13px;color:#8b949e;margin-top:8px">预期距离 2.9–3.1 km、平均心率 162–170。全程选平路；胸闷、头晕、关节锐痛立刻停。测完什么都不用管，我从手表数据里算你的阈值配速和阈值心率。</div>
-</div>
+
 <a href="./input.html" style="display:block;text-align:center;margin-top:12px;padding:12px;background:#161b22;border:1px solid #238636;border-radius:12px;color:#7ee787;font-size:15px;font-weight:600;text-decoration:none">🏋️ 记录力量训练 / 报痛感（点这里输入）</a>
 <a href="./test.html" style="display:block;text-align:center;margin-top:8px;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:12px;color:#f0a35e;font-size:14px;text-decoration:none">📊 2026-11-27 阈值测试详细报告：逐分钟全数据（阈值配速 5:45/km · 阈心率 163）</a>
 <a href="./hrmax.html" style="display:block;text-align:center;margin-top:8px;padding:10px;background:#161b22;border:1px solid #30363d;border-radius:12px;color:#f85149;font-size:14px;text-decoration:none">❤️ 历史最大心率图：306 次活动全记录（可信最大约 187）</a>
@@ -94,18 +78,18 @@ async function refreshBoard(){
 <div class='box'>本周出勤：跑了 <b>3 次</b>（目标 3 次），共 108 分钟，14.0 公里。<br>
 安全审计：近一个月没有疼痛记录（VAS 还没填过）。<br>
 配速进化（120–130 心率下的 Z2 跑，越小越快）：<table class='pt'><tr><td>11-02 周</td><td>2 次</td><td>8.95 分/km</td></tr><tr><td>11-09 周</td><td>3 次</td><td>8.5 分/km</td></tr><tr><td>11-16 周</td><td>4 次</td><td>9.05 分/km</td></tr><tr><td>11-23 周</td><td>2 次</td><td>8.4 分/km</td></tr></table>
-晨脉近 4 周（原始值，bpm）：<div style='margin:4px 0'><svg width='300' height='44' style='max-width:100%'><text x='0' y='10' fill='#8b949e' font-size='9'>46</text><text x='0' y='43' fill='#8b949e' font-size='9'>40</text><polyline points='18,21 28,26 38,36 49,16 59,11 69,26 79,21 90,26 100,6 110,16 120,21 130,11 141,21 151,26 161,26 171,31 182,21 192,26 202,21 212,16 222,16 233,16 243,21 253,21 263,16 274,16 284,11 294,16' fill='none' stroke='#58a6ff' stroke-width='1.5'/></svg><div style='font-size:12px;color:#c9d1d9'>最新 <b>44</b> · 4 周区间 40–46 · 每周平均：43 → 44 → 43 → 44</div></div>HRV 近 4 周（原始值，ms）：<div style='margin:4px 0'><svg width='300' height='44' style='max-width:100%'><text x='0' y='10' fill='#8b949e' font-size='9'>76</text><text x='0' y='43' fill='#8b949e' font-size='9'>54</text><polyline points='18,21 29,25 39,6 50,35 60,29 71,24 82,33 92,28 103,36 114,21 124,25 135,25 145,14 156,16 167,9 177,6 188,18 198,26 209,28 220,14 230,11 241,20 252,17 262,20 273,21 283,32 294,25' fill='none' stroke='#7ee787' stroke-width='1.5'/></svg><div style='font-size:12px;color:#c9d1d9'>最新 <b>62</b> · 4 周区间 54–76 · 每周平均：62 → 63 → 69 → 64</div></div></div>
+晨脉近 4 周（原始值，bpm）：<div style='margin:4px 0'><svg width='300' height='44' style='max-width:100%'><text x='0' y='10' fill='#8b949e' font-size='9'>46</text><text x='0' y='43' fill='#8b949e' font-size='9'>40</text><polyline points='18,26 28,36 38,16 49,11 59,26 69,21 79,26 90,6 100,16 110,21 120,11 130,21 141,26 151,26 161,31 171,21 182,26 192,21 202,16 212,16 222,16 233,21 243,21 253,16 263,16 274,11 284,16 294,16' fill='none' stroke='#58a6ff' stroke-width='1.5'/></svg><div style='font-size:12px;color:#c9d1d9'>最新 <b>44</b> · 4 周区间 40–46 · 每周平均：43 → 44 → 43 → 44</div></div>HRV 近 4 周（原始值，ms）：<div style='margin:4px 0'><svg width='300' height='44' style='max-width:100%'><text x='0' y='10' fill='#8b949e' font-size='9'>76</text><text x='0' y='43' fill='#8b949e' font-size='9'>54</text><polyline points='18,25 29,6 39,35 50,29 60,24 71,33 82,28 92,36 103,21 114,25 124,25 135,14 145,16 156,9 167,6 177,18 188,26 198,28 209,14 220,11 230,20 241,17 252,20 262,21 273,32 283,25 294,31' fill='none' stroke='#7ee787' stroke-width='1.5'/></svg><div style='font-size:12px;color:#c9d1d9'>最新 <b>58</b> · 4 周区间 54–76 · 每周平均：62 → 65 → 67 → 63</div></div></div>
 <h3>处方引擎（后台状态机 P0–P4）</h3>
-<div class='box'><div class='ptitle2'>✅ 今日已完成训练</div><div class='ptext'>今日已练：跑步 4.6km。明日预告见下。</div><div class='ptitle2'>明日（后台参考）· 后台背景 · 关节负荷指标偏高（v2 记录）</div><div class='chips'><div class='chip'><span>心率锁</span><b>120–126 单车</b></div><div class='chip'><span>步频</span><b>—</b></div><div class='chip'><span>力量</span><b>仅上肢+核心</b></div><div class='chip'><span>时长</span><b>35–40 分</b></div></div><div class='ptext'>v2 引擎背景记录：膝/足底通道 ACWR 超过 1.25，提示近期关节负荷爬升较快。按 v3 规则，周跑量未达 15km 时此信号不进入前台决策，明日安排以前台卡为准；此处仅作背景观察与周复盘素材，不作为执行指令。</div></div>
+<div class='box'><div class='ptitle2'>🏋️ 力量日 · 抗阻+护膝专项</div><div class='chips'><div class='chip'><span>心率锁</span><b>—</b></div><div class='chip'><span>步频</span><b>—</b></div><div class='chip'><span>力量</span><b>下肢+护膝 45 分</b></div><div class='chip'><span>时长</span><b>45 分</b></div></div><div class='ptext'>今日不跑：45 分钟下肢+护膝专项（箱式深蹲/罗马尼亚硬拉/单腿臀中肌/屈膝提踵）；打卡后按等级启动跑步锁（L2=48h）。</div></div>
 <h3>⚠️ 风控引擎（后台）</h3>
-<div class='warn ok'>近 7–14 天无风控警告。</div><div class='cooled'>冷却中（72h，未恶化）：🔸 HR_DRIFT · 🔸 JOINT_OVERLOAD</div>
+<div class='warn ok'>近 7–14 天无风控警告。</div><div class='cooled'>冷却中（72h，未恶化）：🔸 HR_DRIFT</div>
 <h3>核心 KPI（后台中间变量，仅供复盘）</h3>
 <div class="kpis">
-<div class="kpi"><div class="name">ANS 就绪度</div><div class="val">🟢 Z +0.67</div><div class="sub">LnHRV 7日均 4.174（中位 4.094，MAD σ 0.119）· CV7 0.067（基线 0.083）· ΔRHR +0 · 无附加闸门触发。前台规则：连续 3 天 HRV 明显偏低才介入减量。</div></div>
-<div class="kpi"><div class="name">EF / Pa:Hr（已移出每日决策，仅月度复盘参考）</div><div class="val">🔴 EF 0.89 · Pa:Hr 10.6%</div><div class="sub">最近 Z2（2026-11-25）：配速掉幅 7.4% · 28 天 EF 斜率 0.0016 · 睡眠 7.12h</div></div>
-<div class="kpi"><div class="name">机械负荷 ACWR（周跑量 <15km 时前台停用）</div><div class="val">膝 🔴 1.29 · 足底 🔴 1.33</div><div class="sub">步频/触地均用跑段口径 · 近 7 天步数增幅 23.8% · 本周跑量 14.0km</div></div>
+<div class="kpi"><div class="name">ANS 就绪度</div><div class="val">🟢 Z +0.41</div><div class="sub">LnHRV 7日均 4.143（中位 4.094，MAD σ 0.119）· CV7 0.062（基线 0.082）· ΔRHR +0 · 无附加闸门触发。前台规则：连续 3 天 HRV 明显偏低才介入减量。</div></div>
+<div class="kpi"><div class="name">EF / Pa:Hr（已移出每日决策，仅月度复盘参考）</div><div class="val">🔴 EF 0.89 · Pa:Hr 10.6%</div><div class="sub">最近 Z2（2026-11-25）：配速掉幅 7.4% · 28 天 EF 斜率 0.0016 · 睡眠 7.78h</div></div>
+<div class="kpi"><div class="name">机械负荷 ACWR（周跑量 <15km 时前台停用）</div><div class="val">膝 🟢 1.04 · 足底 🟢 1.07</div><div class="sub">步频/触地均用跑段口径 · 近 7 天步数增幅 -24.6% · 本周跑量 14.0km</div></div>
 <div class="kpi"><div class="name">力量锁（L0–L3）</div><div class="val">🟢 剩余 0h</div><div class="sub">下肢力量最近 2026-11-23（L2）· 膝 VAS 未录入 · 足底 VAS 未录入</div></div>
 </div>
 </details>
-<div class="foot">前台只执行 4 条死规则：医疗红线 → 疼痛熔断（痛感 ≥4 或连续 2 天 ≥3）→ 疲劳减量（睡眠 &lt;5h / 昨天大重量下肢 / 晨脉高 ≥5 / HRV 连低 3 天）→ 默认正常跑。ACWR 在周跑量 &lt;15km 时前台停用；Pa:Hr 已移出每日决策。数据 2026-11-27 16:13（扬州时间），规格见私有仓 SPEC.md。</div>
+<div class="foot">前台只执行 4 条死规则：医疗红线 → 疼痛熔断（痛感 ≥4 或连续 2 天 ≥3）→ 疲劳减量（睡眠 &lt;5h / 昨天大重量下肢 / 晨脉高 ≥5 / HRV 连低 3 天）→ 默认正常跑。ACWR 在周跑量 &lt;15km 时前台停用；Pa:Hr 已移出每日决策。数据 2026-11-28 06:57（扬州时间），规格见私有仓 SPEC.md。</div>
 </body></html>
