@@ -33,12 +33,12 @@ table.pt{border-collapse:collapse;margin:6px 0} table.pt td{border:1px solid #30
 <div class="note">⚠️ 唯一注意事项：最近跑步心率容易飘高，出门前几分钟压着点，别一上来就冲。</div>
 </div>
 <div style="margin-top:12px;background:#161b22;border:1px solid #30363d;border-radius:12px;padding:12px">
-<div style="font-size:13px;color:#8b949e">📅 <span id="rfTime">数据更新于 11月28日 06:57</span>（每天 07:00 自动更新，17:00 复盘后也会更新）</div>
+<div style="font-size:13px;color:#8b949e">📅 <span id="rfTime">数据更新于 11月28日 17:00</span>（每天 07:00 自动更新，17:00 复盘后也会更新）</div>
 <button id="rfBtn" onclick="refreshBoard()" style="display:block;width:100%;margin-top:8px;padding:13px;background:#1f6feb;border:none;border-radius:10px;color:#fff;font-size:16px;font-weight:600;cursor:pointer">🔄 刷新数据</button>
 <div id="rfStatus" style="font-size:13px;color:#8b949e;margin-top:8px;min-height:18px"></div>
 </div>
 <script>
-const CUR = "11月28日 06:57";
+const CUR = "11月28日 17:00";
 async function refreshBoard(){
   const btn=document.getElementById('rfBtn'), st=document.getElementById('rfStatus');
   btn.disabled=true; btn.style.opacity=.6; st.textContent='正在检查最新数据…';
@@ -82,7 +82,7 @@ async function refreshBoard(){
 <h3>处方引擎（后台状态机 P0–P4）</h3>
 <div class='box'><div class='ptitle2'>🏋️ 力量日 · 抗阻+护膝专项</div><div class='chips'><div class='chip'><span>心率锁</span><b>—</b></div><div class='chip'><span>步频</span><b>—</b></div><div class='chip'><span>力量</span><b>下肢+护膝 45 分</b></div><div class='chip'><span>时长</span><b>45 分</b></div></div><div class='ptext'>今日不跑：45 分钟下肢+护膝专项（箱式深蹲/罗马尼亚硬拉/单腿臀中肌/屈膝提踵）；打卡后按等级启动跑步锁（L2=48h）。</div></div>
 <h3>⚠️ 风控引擎（后台）</h3>
-<div class='warn ok'>近 7–14 天无风控警告。</div><div class='cooled'>冷却中（72h，未恶化）：🔸 HR_DRIFT</div>
+<div class='warn'>🟡 <b>HR_DRIFT</b> 甜区漂移：近次 Z2 跑心率 >126 时长占比 >15%。下次前 8 分钟压在 118 内，上坡改快走，用步频把心率拉回 122 附近。</div>
 <h3>核心 KPI（后台中间变量，仅供复盘）</h3>
 <div class="kpis">
 <div class="kpi"><div class="name">ANS 就绪度</div><div class="val">🟢 Z +0.41</div><div class="sub">LnHRV 7日均 4.143（中位 4.094，MAD σ 0.119）· CV7 0.062（基线 0.082）· ΔRHR +0 · 无附加闸门触发。前台规则：连续 3 天 HRV 明显偏低才介入减量。</div></div>
@@ -91,5 +91,5 @@ async function refreshBoard(){
 <div class="kpi"><div class="name">力量锁（L0–L3）</div><div class="val">🟢 剩余 0h</div><div class="sub">下肢力量最近 2026-11-23（L2）· 膝 VAS 未录入 · 足底 VAS 未录入</div></div>
 </div>
 </details>
-<div class="foot">前台只执行 4 条死规则：医疗红线 → 疼痛熔断（痛感 ≥4 或连续 2 天 ≥3）→ 疲劳减量（睡眠 &lt;5h / 昨天大重量下肢 / 晨脉高 ≥5 / HRV 连低 3 天）→ 默认正常跑。ACWR 在周跑量 &lt;15km 时前台停用；Pa:Hr 已移出每日决策。数据 2026-11-28 06:57（扬州时间），规格见私有仓 SPEC.md。</div>
+<div class="foot">前台只执行 4 条死规则：医疗红线 → 疼痛熔断（痛感 ≥4 或连续 2 天 ≥3）→ 疲劳减量（睡眠 &lt;5h / 昨天大重量下肢 / 晨脉高 ≥5 / HRV 连低 3 天）→ 默认正常跑。ACWR 在周跑量 &lt;15km 时前台停用；Pa:Hr 已移出每日决策。数据 2026-11-28 17:00（扬州时间），规格见私有仓 SPEC.md。</div>
 </body></html>
